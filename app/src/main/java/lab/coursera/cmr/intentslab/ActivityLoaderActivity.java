@@ -21,6 +21,8 @@ public class ActivityLoaderActivity extends Activity {
     // TextView that displays user-entered text from ExplicitlyLoadedActivity runs
     private TextView mUserTextView;
 
+    private Button explicitActivationButton, implicitActivationButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,7 @@ public class ActivityLoaderActivity extends Activity {
         mUserTextView = (TextView) findViewById(R.id.textView1);
 
         // Declare and setup Explicit Activation button
-        Button explicitActivationButton = (Button) findViewById(R.id.explicit_activation_button);
+        explicitActivationButton = (Button) findViewById(R.id.explicit_activation_button);
         explicitActivationButton.setOnClickListener(new View.OnClickListener() {
 
             // Call startExplicitActivation() when pressed
@@ -43,7 +45,7 @@ public class ActivityLoaderActivity extends Activity {
         });
 
         // Declare and setup Implicit Activation button
-        Button implicitActivationButton = (Button) findViewById(R.id.implicit_activation_button);
+        implicitActivationButton = (Button) findViewById(R.id.implicit_activation_button);
         implicitActivationButton.setOnClickListener(new View.OnClickListener() {
 
             // Call startImplicitActivation() when pressed
@@ -65,10 +67,10 @@ public class ActivityLoaderActivity extends Activity {
         Log.i(TAG, "Entered startExplicitActivation()");
 
         // TODO - Create a new intent to launch the ExplicitlyLoadedActivity class
-        Intent explicitIntent = null;
 
         // TODO - Start an Activity using that intent and the request code defined above
-
+        Intent explicitIntent = new Intent(ActivityLoaderActivity.this, ExplicitlyLoadedActivity.class);
+        startActivityForResult(explicitIntent, GET_TEXT_REQUEST_CODE);
 
     }
 
