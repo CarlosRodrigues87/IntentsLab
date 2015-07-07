@@ -1,6 +1,7 @@
 package lab.coursera.cmr.intentslab;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,14 +47,16 @@ public class ExplicitlyLoadedActivity extends Activity {
 
         Log.i(TAG, "Entered enterClicked()");
 
-        // TODO - Save user provided input from the EditText field
+        String txtValue = mEditText.getText().toString();
 
-        // TODO - Create a new intent and save the input from the EditText field as an extra
+        Log.i(TAG, "valor da label :" + txtValue);
 
-        // TODO - Set Activity's result with result code RESULT_OK
+        Intent intent = new Intent(ExplicitlyLoadedActivity.this, ActivityLoaderActivity.class);
 
-        // TODO - Finish the Activity
+        intent.putExtra("txtValue",txtValue);
 
+        setResult(RESULT_OK, intent);
+        super.finish();
     }
 
 }
